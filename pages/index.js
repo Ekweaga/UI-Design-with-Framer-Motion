@@ -4,6 +4,7 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -77,6 +78,35 @@ export default function Home() {
       label:"LEGACY"
   }
     ]
+
+    const ulContainer = {
+      hidden:{
+          opacity:0
+      },
+      visible:{
+          opacity:1,
+          transition:{
+              staggerChildren:0.5,
+              when:"beforeChildren"
+          }
+      }
+  }
+
+  const liContainer = {
+      hidden:{
+          x:"-100vw",
+          opacity:0
+      },
+      visible:{
+        x:0,
+        opacity:1,
+        transition:{
+          duration:0.6
+        }
+      }
+  }
+
+
   
   return (
     <>
@@ -120,8 +150,8 @@ export default function Home() {
       </div>
 
       <div className='p-3 bg-[#B3E140] h-[500px] ' style={{borderTopLeftRadius:'300px'}} >
-        <h1 className='text-7xl text-right opacity-[0.5] font-bold mb-[0px] mr-[60px]'>POPULAR</h1>
-        <h1 className='text-4xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]'>RIGHT NOW</h1>
+        <motion.h1 className='text-7xl text-right opacity-[0.5] font-bold mb-[0px] mr-[60px]' initial={{x:50}} whileInView={{x:0}} transition={{duration:0.5}}>POPULAR</motion.h1>
+        <motion.h1 className='text-4xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]' initial={{x:-50}} whileInView={{x:0}} transition={{duration:0.5}}>RIGHT NOW</motion.h1>
 
         <div className='flex gap-[40px] justify-center items-center '>
           {
@@ -155,15 +185,17 @@ export default function Home() {
 
         <div className='relative'>
           <div className="absolute top-[60px] right-0 z-50">
-            <h2  className='text-8xl text-right opacity-[0.4] font-bold mb-[0px] mr-[30px]'>OFFER</h2>
+            <h2  className='text-6xl text-right opacity-[0.4] font-extrabold mb-[0px] mr-[180px] z-50 -mt-[5px]'>OFFER</h2>
           </div>
-          <div className='absolute right-0 bottom-[300px] left-[300px]'>
-           <h2 className='font-bold text-9xl transform rotate-[60deg] opacity-[0.9]'> 60%</h2>
-          </div>
-          <div className='absolute right-0 bottom-[100px] left-[450px]'><h3 className='font-bold text-5xl transform rotate-[60deg] opacity-[0.4]'>OFF</h3></div>
+          <div className='absolute right-0 bottom-[350px] left-[300px]'>
+          <Image src="/6.png" width={200} height={50} alt="icon"/>   </div>
+          <div className='absolute right-0 bottom-[220px] left-[350px]'>
+           <Image src="/0.png" width={200} height={50} alt="icon"/>  <Image src="/percent.png" width={50} height={50} alt="icon" className='absolute top-[100px] left-[190px]'/></div>
+       
+          <div className='absolute right-0 bottom-[150px] left-[450px]'><h3 className='font-bold text-7xl transform rotate-[60deg] opacity-[0.9]'>OFF</h3></div>
 
-         <motion.div whileInView={{x:0, opacity:1}} initial={{x:200,opacity:0}} viewport={{once:false,amount:0.5}} transition={{duration:1}} className='z-20'>
-         <Image src="/manrun.png" width={600} height={50} alt="icon" />
+         <motion.div whileInView={{x:0, opacity:1}} initial={{x:200,opacity:0}} viewport={{once:false,amount:0.5}} transition={{duration:1}} className='z-10'>
+         <Image src="/manrun.png" width={600} height={50} alt="icon" className='z-10'/>
          </motion.div>
          
          
@@ -182,18 +214,40 @@ export default function Home() {
         </div><br/><br/>
 
         <div>
-        <button className='bg-[#75A204] w-[220px] p-3 text-black font-bold shadow-lg flex items-center justify-center gap-2'>JOIN NOW</button>
+        <motion.button className='bg-[#75A204] w-[220px] p-3 text-black font-bold shadow-lg flex items-center justify-center gap-2'>JOIN NOW</motion.button>
         </div>
 
 </div>
        
 
       </div>
+      <motion.div className='p-3 bg-[#B3E140] h-[200px]  '>
 
-      <div className='p-3 bg-[#B3E140] h-[200px] ' >
-        <h1 className='text-8xl text-right opacity-[0.4] font-bold mb-[0px] mr-[60px]'>SPONSOR</h1>
-        <h1 className='text-5xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]'>EVENT</h1>
+      <motion.div  initial={{opacity:0}} whileInView={{opacity:1}} transition={{staggerChildren:0.5,when:"beforeChildren"}}>
+        <motion.h1 className='text-8xl text-right opacity-[0.4] font-bold mb-[0px] mr-[60px]' initial={{x:50}} whileInView={{x:0}} transition={{duration:0.5}}>SPONSOR</motion.h1>
+        <motion.h1 className='text-5xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]' initial={{x:-50}} whileInView={{x:0}} transition={{duration:0.5}}>EVENT</motion.h1>
+</motion.div>
+</motion.div>
+
+<div className='p-3 bg-[#B3E140] p-4 '>
+
+  <motion.div>
+    <motion.div className='flex gap-[50px] w-[60%] mx-auto items-center justify-center' initial={{opacity:0}} whileInView={{opacity:1}} transition={{staggerChildren:0.5,when:"beforeChildren"}}>
+
+    <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3}}><Image src="/1200px-MLS_crest_logo_RGB_gradient 1.png" width={150} height={50}/></motion.div>
+    <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3,delay:0.2}}><Image src="/1200px-National_Football_League_logo 1.png" width={100} height={50}/></motion.div>
+    <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3,delay:0.4}}><Image src="/FIFA-Logo 1.png" width={150} height={50}/></motion.div>
+    <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3,delay:0.6}}><Image src="/MLB-Logo 1.png" width={150} height={50}/></motion.div>
+    <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3,delay:0.8}}><Image src="/NBA-Logo 1.png" width={150} height={50}/></motion.div>
+       <motion.div initial={{x:-100}} whileInView={{x:0}} viewport={{amount:1}} transition={{duration:0.3,delay:1}}><Image src="/76-99 1.png" width={150} height={50}/></motion.div>
+   
+    
+    </motion.div>
+  </motion.div>
+
 </div>
+
+<Footer/>
          
     </>
   )
