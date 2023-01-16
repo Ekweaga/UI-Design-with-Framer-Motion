@@ -46,24 +46,35 @@ export default function Home() {
         }
       }
     }
+
+    const shoeAnimate ={
+      animate:{
+        transition:{
+          staggerChildren:0.3
+        }
+      }
+    }
     const shoes = [
       {
           img:"/air-vapormax-2021-fk-mens-shoes-NpTfFzqq.png",
-          title:"NIKE AIR VAPOMAX 2022 FK",
+          title:"NIKE AIR MAX 2022 FK",
           price:"$130",
-          icon:"/Group 2.png"
+          icon:"/Group 2.png",
+          label:"CARDI"
       },
       {
         img:"/air-zoom-pegasus-38-womens-road-running-shoes-gg8GBK11.png",
-        title:"NIKE AIR VAPOMAX 2022 FK",
+        title:"NIKE AIR MAX SE 2022",
         price:"$180",
-        icon:"/Group 2.png"
+        icon:"/Group 2.png",
+        label:"LEATHER"
     },
     {
       img:"/blazer-low-77-big-kids-shoes-n2Bf0Leeeee.png",
-      title:"NIKE AIR VAPOMAX 2022 FK",
+      title:"NIKE AIR MAX PEGASUS ",
       price:"$230",
-      icon:"/Group 2.png"
+      icon:"/Group 2.png",
+      label:"LEGACY"
   }
     ]
   
@@ -109,22 +120,24 @@ export default function Home() {
       </div>
 
       <div className='p-3 bg-[#B3E140] h-[500px] ' style={{borderTopLeftRadius:'300px'}} >
-        <h1 className='text-7xl text-right opacity-[0.5] font-bold mb-[0px] mr-[30px]'>POPULAR</h1>
-        <h1 className='text-4xl text-right  font-bold mb-[10px] -mt-[30px]  mr-[30px]'>RIGHT NOW</h1>
+        <h1 className='text-7xl text-right opacity-[0.5] font-bold mb-[0px] mr-[60px]'>POPULAR</h1>
+        <h1 className='text-4xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]'>RIGHT NOW</h1>
 
         <div className='flex gap-[40px] justify-center items-center '>
           {
-            shoes.map((item)=>{
+            shoes.map((item,index)=>{
               return(
-                <div className='bg-[#C3EB5F] h-[300px] w-[270px] flex flex-col justify-center items-center p-2 relative' style={{borderTopLeftRadius:'100px'}}>
+                <motion.div className='bg-[#C3EB5F] h-[300px] w-[270px] flex flex-col justify-center items-center p-2 relative' style={{borderTopLeftRadius:'60px'}} >
                   <div className="absolute left-[50px] top-[30px]">  <Image src="/luv.png" width={30} height={30} alt="shoe"/></div>
-                  <Image src={item.img} width={250} height={100} alt="shoe"/>
-                  <div className='flex justify-between absolute items-center -bottom-[80px] p-4'>
-                   <p className='text-2xl font-bold'>{item.title}</p>
-                   <p className='text-2xl font-bold flex flex-col items-center justify-center'>{item.price}<br/>
-                   <Image src={item.icon} width={50} height={50} alt="icon"/></p>
+                  <div className='' ><motion.p className='transform -rotate-[40deg] text-6xl font-bold opacity-[0.4] -mb-[50px] z-20 mt-[20px]' initial={{opacity:0,x:-50,rotate:0}} whileInView={{x:0,opacity:0.4,rotate:-40}} transition={{duration:0.5,delay:index}} viewport={{once:false,amount:0.5}}>{item.label}</motion.p>
+                  <motion.div  className='z-50' initial={{opacity:0,x:-50}} whileInView={{x:0,opacity:1}} transition={{duration:0.5,delay:index}} viewport={{once:false,amount:0.5}}><Image src={item.img} width={250} height={100} alt="shoe"/></motion.div></div>
+                
+                  <div className='flex justify-between absolute items-center -bottom-[50px] p-4'>
+                   <motion.p className='text-2xl font-bold' initial={{opacity:0}} whileInView={{opacity:1}} transition={{duration:1}} viewport={{once:false,amount:1}}>{item.title}</motion.p>
+                   <div className='text-2xl font-bold flex flex-col items-center justify-center'>{item.price}<br/>
+                   <motion.div initial={{opacity:0,x:50}} whileInView={{x:0,opacity:1}} transition={{duration:0.5}} viewport={{once:false,amount:1}}><Image src={item.icon} width={50} height={50} alt="icon"/></motion.div></div>
                   </div>
-                </div>
+                </motion.div>
               )
             })
           }
@@ -133,16 +146,54 @@ export default function Home() {
       </div>
       <div className='p-3 bg-[#B3E140]  flex items-center justify-center' >
         <div>
-          <h2 className='text-9xl font-bold'>JUST.</h2>
+        <Image src="/brand-nike 1.png" width={170} height={50} alt="icon"/>
+          <h2 className='text-9xl font-bold tracking-wide'>JUST.</h2>
           <h2 className='text-9xl font-bold'>DO.</h2>
           <h2 className='text-9xl font-bold'>IT.</h2>
         </div>
-        <motion.div initial={{opacity:0,x:200}} animate={{opacity:1,x:0}}>
-        <Image src="/manrun.png" width={500} height={50} alt="icon"/>
-        </motion.div>
+
+
+        <div className='relative'>
+          <div className="absolute top-[60px] right-0 z-50">
+            <h2  className='text-8xl text-right opacity-[0.4] font-bold mb-[0px] mr-[30px]'>OFFER</h2>
+          </div>
+          <div className='absolute right-0 bottom-[300px] left-[300px]'>
+           <h2 className='font-bold text-9xl transform rotate-[60deg] opacity-[0.9]'> 60%</h2>
+          </div>
+          <div className='absolute right-0 bottom-[100px] left-[450px]'><h3 className='font-bold text-5xl transform rotate-[60deg] opacity-[0.4]'>OFF</h3></div>
+
+         <motion.div whileInView={{x:0, opacity:1}} initial={{x:200,opacity:0}} viewport={{once:false,amount:0.5}} transition={{duration:1}} className='z-20'>
+         <Image src="/manrun.png" width={600} height={50} alt="icon" />
+         </motion.div>
+         
+         
+       
+        </div>
 
     
       </div>
+
+      <div className='p-3 bg-[#B3E140]  flex items-center justify-center p-4' >
+
+<div className='flex flex-col items-center justify-center'>
+<div>
+          <h2 className='text-center text-6xl font-bold spacing-[2px]'>FREE SHIPPING<br/>EXCLUSIVES</h2>
+          <p className='text-1xl w-[600px] font-bold mt-[20px] text-center'>YOU KICK IT HARD WITH STYLE AND FITNESS. NOW GET REWARDED FOR IT WITH A LOYALTY PROGRAM THAT GETS YOU</p>
+        </div><br/><br/>
+
+        <div>
+        <button className='bg-[#75A204] w-[220px] p-3 text-black font-bold shadow-lg flex items-center justify-center gap-2'>JOIN NOW</button>
+        </div>
+
+</div>
+       
+
+      </div>
+
+      <div className='p-3 bg-[#B3E140] h-[200px] ' >
+        <h1 className='text-8xl text-right opacity-[0.4] font-bold mb-[0px] mr-[60px]'>SPONSOR</h1>
+        <h1 className='text-5xl text-right  font-bold mb-[10px] -mt-[25px]  mr-[60px]'>EVENT</h1>
+</div>
          
     </>
   )
